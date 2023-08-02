@@ -144,12 +144,19 @@ filename:String, LineOne.x1, LineOne.y1, LineOne.x2, LineOne.y2, LineTwo.x1, Lin
 		BufferedImage image;
 		      	
 			try {
-				java.net.URL url = this.getClass().getResource(Wlt.IMG_DIR + "/" + ((String) slides[currentSlide-1][0]));
+				java.net.URL url = getClass().getClassLoader().getResource(Wlt.IMG_DIR + "/" + ((String) slides[currentSlide-1][0])); //Updated 2023 for jar packaging.
 				//image = ImageIO.read(new File((String) slides[currentSlide-1][0]))
 				image = ImageIO.read(url);
 				return image;
 					
-			} catch (IOException e) {
+			}catch (IllegalArgumentException e) {
+				JOptionPane.showMessageDialog(frame,
+						"Error Loading Image (null?): " + Wlt.IMG_DIR + "/" + ((String) slides[currentSlide-1][0]) ,
+						"",
+						JOptionPane.WARNING_MESSAGE);
+			}
+
+			catch (IOException e) {
 				JOptionPane.showMessageDialog(frame,
     				"Error Loading Image!",
    				"",

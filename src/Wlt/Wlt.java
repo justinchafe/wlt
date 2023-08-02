@@ -11,7 +11,7 @@ import java.lang.StringBuilder;
 
 public class Wlt extends JFrame  {
 	
-	final String SETTINGS_FILENAME = "../settings/settings.txt";
+	final String SETTINGS_FILENAME = "settings/settings.txt";
 	private boolean RESIZEABLE = true;
 	
 	public static int NUM_SLIDES;
@@ -20,11 +20,13 @@ public class Wlt extends JFrame  {
 	public static String BUTTON_MSG = "Click WHEN FINISHED";
 	public static double LINE_DETECT = 20;
 	public static String NO_SELECTION_ERROR = "Please make a selection.";
-	public static String NOT_FINISHED_ERROR = "Please finish extending the line accross the container";
+	public static String NOT_FINISHED_ERROR = "Please finish extending the line across the container";
 	public static boolean ALLOW_NEG_ANGLE = true;
-	public static String IMG_DIR = "../img";
-	public static String HTML_DIR = "../html";
+	public static String IMG_DIR = "img";
+	public static String HTML_DIR = "html";
 	public static int MIDPOINT = 10;
+	public static String XML_INTRO = "xmldata/XmlIntroSideData.xml"; //added 2023
+	public static String XML_SLIDES = "xmldata/XmlSideData.xml"; //added 2023
 
 	WltPanel panel;
 	JPanel mainPanel, subPanel;
@@ -49,7 +51,9 @@ public class Wlt extends JFrame  {
 		}
 
 		try {
-			loadSettings(this.getClass().getResourceAsStream(SETTINGS_FILENAME));
+			InputStream is = getClass().getClassLoader().getResourceAsStream(SETTINGS_FILENAME); //added 2023 for jar packaging.
+			//loadSettings(this.getClass().getResourceAsStream(SETTINGS_FILENAME));
+			loadSettings(is);
 		}catch (NullPointerException e) {
 
 				JOptionPane.showMessageDialog(this, "Error Loading Settings from File: "  +  SETTINGS_FILENAME + " - using defaults");

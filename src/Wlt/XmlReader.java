@@ -1,5 +1,6 @@
 package Wlt;
 import java.io.File;
+import javax.swing.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -7,6 +8,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import java.io.InputStream;
 import java.util.StringTokenizer;
 import java.awt.geom.Line2D;
 import java.awt.Dimension;
@@ -18,17 +21,20 @@ public class XmlReader {
 	Document doc;
 
 public XmlReader(String filename) {
-	System.out.println(filename);
 	try {
+		InputStream is = getClass().getClassLoader().getResourceAsStream(filename); //updated 2023 for jar packaging.
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
   		DocumentBuilder db = dbf.newDocumentBuilder();
-		java.io.InputStream is = this.getClass().getResourceAsStream(filename);
+		//java.io.InputStream is = this.getClass().getResourceAsStream(filename); //old
   		doc = db.parse(is); 
   		doc.getDocumentElement().normalize();
   		
-		
 
-	} catch (Exception e) {
+	}catch (NullPointerException e) {
+		System.out.println("XML resource file not found: " + filename);
+		e.printStackTrace();
+	}
+	catch (Exception e) {
 		e.printStackTrace();
 	}
 

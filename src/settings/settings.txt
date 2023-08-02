@@ -1,8 +1,8 @@
 BUTTON_MSG=Click When Finished
 BUTTON_MSG2=Reset
 MIDPOINT=10
-IMG_DIR=../img
-HTML_DIR=../html
+IMG_DIR=img
+HTML_DIR=html
 LINE_DETECT=18
 NOT_FINISHED_ERROR=Please finish extending the line across the container.
 NO_SELECTION_ERROR=Please make a selection.

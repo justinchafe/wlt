@@ -4,11 +4,13 @@ package Wlt;
 import java.awt.*;
 import java.awt.geom.*;
 import java.awt.event.*;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder; 
 import java.awt.image.*;
 import java.awt.FontMetrics;
 import java.lang.StringBuilder;
+import java.net.URI;
 import java.util.StringTokenizer;
 import java.io.*;
 
@@ -64,7 +66,8 @@ public class WltPanel extends JPanel implements ComponentListener, MouseListener
 		centerPanel.setBackground(Color.white);	
 		this.add(bottomPanel, BorderLayout.PAGE_END);
 		this.add(centerPanel, BorderLayout.CENTER);
-		mySlides = new Slides("../xmldata/XmlIntroSideData.xml");
+		//mySlides = new Slides("../xmldata/XmlIntroSideData.xml"); //removed 2023
+		mySlides = new Slides(Wlt.XML_INTRO); //added 2023
 
 		mySlides.loadFromFile();
 		l = new LineManager(mySlides.getCurrentSide("right"), mySlides.getCurrentSide("left"), mySlides.getCurrentSide("top"),mySlides.getCurrentSide("bottom") );
@@ -72,6 +75,12 @@ public class WltPanel extends JPanel implements ComponentListener, MouseListener
 		centerScrollPane = new JScrollPane();
 		centerEditorPane = new JEditorPane();
 		centerEditorPane.setEditable(false);
+		//java.net.URL introInstr = getClass().getClassLoader().getResource(Wlt.HTML_DIR + "/" + "introText.html");
+		//System.out.println("Host: " + introInstr.getHost());
+		//System.out.println("Path: " + introInstr.getPath());
+		//System.out.println("File: " + introInstr.getFile());
+		//System.out.println("External Form: " + introInstr.toExternalForm());
+		//addEditorPane(introInstr.getPath().substring(1), true, "CENTER");
 		addEditorPane(Wlt.HTML_DIR + "/" + "introText.html", true, "CENTER");
 		centerScrollPane.setBorder(new EmptyBorder(0,0,0,0));
 		centerPanel.add(centerScrollPane);
@@ -187,7 +196,8 @@ public class WltPanel extends JPanel implements ComponentListener, MouseListener
 
 		if (where.equals("CENTER")) {
 			try {
-				java.net.URL helpURL = this.getClass().getResource(filename);
+				java.net.URL helpURL = getClass().getClassLoader().getResource(filename); //added 2023 - jar
+				///java.net.URL helpURL = this.getClass().getResource(filename); //old
 			
 			if (helpURL != null) {
     				centerEditorPane.setPage(helpURL);
@@ -204,12 +214,12 @@ public class WltPanel extends JPanel implements ComponentListener, MouseListener
 		}else if (where.equals("TOP")) {
 			
 			try {
-				java.net.URL helpURL = this.getClass().getResource(filename);
+				java.net.URL helpURL = getClass().getClassLoader().getResource(filename); //added 2023 - jar
+				//java.net.URL helpURL = this.getClass().getResource(filename); //old
 			
 			if (helpURL != null) {
     				topEditorPane.setPage(helpURL);
-				
-    			
+
 			} else {
     				System.err.println("Couldn't find file: " + filename);
 			}
@@ -223,7 +233,8 @@ public class WltPanel extends JPanel implements ComponentListener, MouseListener
 		}else if (where.equals("BOTTOM")) {
 					
 			try {
-				java.net.URL helpURL = this.getClass().getResource(filename);
+				java.net.URL helpURL = getClass().getClassLoader().getResource(filename); //added 2023 - jar
+				//java.net.URL helpURL = this.getClass().getResource(filename); //old
 			
 			if (helpURL != null) {
     				bottomEditorPane.setPage(helpURL);
@@ -451,8 +462,9 @@ public class WltPanel extends JPanel implements ComponentListener, MouseListener
 			bottomScrollPane = new JScrollPane();
 			topScrollPane.setBorder(new EmptyBorder(0,0,0,0));
 			bottomScrollPane.setBorder(new EmptyBorder(0,0,0,0));
+
 			addEditorPane(Wlt.HTML_DIR + "/" + "bottleInstructionsBottom.html", true, "BOTTOM");
-			addEditorPane(Wlt.HTML_DIR + "/" + "bottleInstructionsTop.html", true, "TOP"); 
+			addEditorPane(Wlt.HTML_DIR + "/" + "bottleInstructionsTop.html", true, "TOP");
 			topScrollPane.setPreferredSize(new Dimension(135,135));
 			bottomScrollPane.setPreferredSize(new Dimension(100,100));
 			this.add(topScrollPane, BorderLayout.NORTH);
@@ -472,7 +484,8 @@ public class WltPanel extends JPanel implements ComponentListener, MouseListener
 				//testLabel.setText("" + screenNum);
 				this.remove(topScrollPane);
 				this.remove(bottomScrollPane);
-				mySlides = new Slides("../xmldata/XmlSideData.xml");
+				//mySlides = new Slides("../xmldata/XmlSideData.xml");
+				mySlides = new Slides(Wlt.XML_SLIDES); //added 2023.
 				mySlides.loadFromFile();
 				ENDSCREEN = mySlides.getMax() + Wlt.NUM_NON_TRIAL_SCREENS-1;
 				l.resetUserLine();
