@@ -1,18 +1,13 @@
 //ADD INITIALIZATION ROUTINE, CALL AFTER DIALOG.  Participant should be init() and updated (& slides?)
 package Wlt;
 
-import java.awt.*;
-import java.awt.geom.*;
-import java.awt.event.*;
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder; 
-import java.awt.image.*;
-import java.awt.FontMetrics;
-import java.lang.StringBuilder;
-import java.net.URI;
-import java.util.StringTokenizer;
-import java.io.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.GeneralPath;
+import java.awt.geom.Line2D;
 
 
 public class WltPanel extends JPanel implements ComponentListener, MouseListener, MouseMotionListener, ActionListener {

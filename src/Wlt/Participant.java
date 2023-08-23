@@ -1,24 +1,21 @@
 //Participant class
 
 package Wlt;
-import org.w3c.dom.*;
-import javax.xml.parsers.*;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.*;
-import javax.xml.transform.stream.*;
 
-import java.io.*;
-import java.lang.*;
-import java.util.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
-import java.awt.geom.Line2D;
-import java.awt.geom.Line2D.Double;
-import java.awt.*;
-import java.awt.geom.*;
-import java.util.ArrayList;
-import java.awt.event.*;
 import javax.swing.*;
-import java.text.*;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.*;
+import java.util.ArrayList;
 
 public class Participant {
 

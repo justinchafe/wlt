@@ -2,8 +2,6 @@ package Wlt;
 import java.awt.geom.*;
 import java.util.ArrayList;
 
-
-
 public class LineManager {
 	final double TOLERANCE = 1.0;
 	final boolean DEBUG_ON = false;
@@ -23,7 +21,7 @@ public class LineManager {
 //LineOne should be taken as the left most line if the bottle was standing upright
 //LineTwo should be taken as the right most line if the bottle was standing upright
 //topCap is essentially the bottom of the bottle if the bottle was standing upright, with start marked from the bottom of LineOne
-//bottomCap is essentially the top of the bottle if the bottle was standing upright, witht start marked from the top of LineTWo
+//bottomCap is essentially the top of the bottle if the bottle was standing upright, with start marked from the top of LineTWo
 
 	public LineManager() {
 		Point2D point;
@@ -333,8 +331,6 @@ public class LineManager {
 		int q[] = new int[4];
 		
 
-		
-		
 		switch (first) {
 
 			case 0:

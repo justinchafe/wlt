@@ -1,13 +1,15 @@
 package Wlt;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.geom.Line2D;
-import java.awt.geom.Line2D.Double;
-import javax.imageio.*;
-import java.awt.image.*;
-import java.io.*;
-import java.util.*;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 public class Slides {
 	XmlReader xml;

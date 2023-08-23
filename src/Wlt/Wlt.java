@@ -1,13 +1,9 @@
 package Wlt;
-import javax.swing.JFrame;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.io.*;
 import java.util.StringTokenizer;
-import java.awt.Toolkit;
-import java.net.URL;
-import java.lang.StringBuilder;
 
 public class Wlt extends JFrame  {
 	
